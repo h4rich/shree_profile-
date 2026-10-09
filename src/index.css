@@ -1,0 +1,59 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: "Inter", sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+
+  --color-primary: #1e293b;
+  --color-accent: #0ea5e9; /* Electric Blue */
+  --color-accent-gold: #f59e0b; /* Champagne Gold */
+
+  --color-glass-card: rgba(255, 255, 255, 0.1);
+  --color-glass-border: rgba(255, 255, 255, 0.2);
+}
+
+/* Custom Glassmorphism Utilities */
+@layer utilities {
+  .glass {
+    @apply bg-white/10 backdrop-blur-md border border-white/20 shadow-lg dark:bg-black/20 dark:border-white/10;
+  }
+  .glass-panel {
+    @apply bg-white/30 backdrop-blur-lg border border-white/30 shadow-xl dark:bg-slate-900/40 dark:border-white/10;
+  }
+}
+
+:root {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  @apply bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-50 transition-colors duration-300;
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-display);
+}
+
+/* Preloader Sweep Animation */
+@keyframes sweep {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.animate-sweep {
+  animation: sweep 2s infinite ease-in-out;
+}
